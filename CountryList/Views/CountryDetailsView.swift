@@ -154,7 +154,7 @@ struct CountryDetailView: View {
                 .foregroundColor(.secondary)
             Text(value)
                 .font(.body)
-                .fontWeight(.medium)
+                .fontWeight(.regular)
         }
         .padding()
         .background(Color.white)

@@ -2,7 +2,7 @@
 //  HomeView.swift
 //  CountryList
 //
-//  Created by p901nyy on 2024-10-17.
+//  Created on 2024-10-17.
 //
 
 import SwiftUI

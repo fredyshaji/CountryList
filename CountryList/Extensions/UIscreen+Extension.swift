@@ -2,7 +2,7 @@
 //  UIscreen+Extension.swift
 //  CountryList
 //
-//  Created by p901nyy on 2024-10-18.
+//  Created on 2024-10-18.
 //
 
 import UIKit

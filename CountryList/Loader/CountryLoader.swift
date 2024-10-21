@@ -2,7 +2,7 @@
 //  CountryLoader.swift
 //  CountryList
 //
-//  Created by p901nyy on 2024-10-18.
+//  Created 2024-10-18.
 //
 
 import Foundation

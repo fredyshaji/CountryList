@@ -37,12 +37,12 @@ struct HomeView: View {
                 Spacer()
 
                 LinearGradient(
-                    gradient: Gradient(colors: [Color.white.opacity(0.1), Color.gray.opacity(0.6)]),
+                    gradient: Gradient(colors: [Color.colorWhite.opacity(0.1), Color.gray.opacity(0.6)]),
                     startPoint: .top,
                     endPoint: .bottom
                 )
                 .frame(height: 100)
-                .shadow(color: Color.black.opacity(0.1), radius: 10, x: 0, y: -5) // Shadow for depth
+                .shadow(color: Color.colorBlack.opacity(0.1), radius: 10, x: 0, y: -5) // Shadow for depth
                 .allowsHitTesting(false)
                 
             }

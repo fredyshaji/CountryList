@@ -37,12 +37,12 @@ struct SearchView: View {
                                             .scaledToFill()
                                             .frame(width: 40, height: 40)
                                             .clipShape(Circle())
-                                            .overlay(Circle().stroke(.black, lineWidth: 0.5))
+                                            .overlay(Circle().stroke(.colorBlack, lineWidth: 0.5))
                                     } placeholder: {
                                         Image(systemName: "flag.circle")
                                             .frame(width: 40, height: 40)
                                             .clipShape(Circle())
-                                            .overlay(Circle().stroke(.black, lineWidth: 0.5))
+                                            .overlay(Circle().stroke(.colorBlack, lineWidth: 0.5))
                                     }
                                     Text(country.name.common)
                                 }

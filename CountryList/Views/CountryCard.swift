@@ -29,7 +29,7 @@ struct CountryCard: View {
                 Text(country.name.common)
                     .font(.headline)
                     .padding(.top, 5)
-                    .foregroundStyle(.black)
+                    .foregroundStyle(.colorBlack)
                     .minimumScaleFactor(0.4)
                 Spacer()
             }

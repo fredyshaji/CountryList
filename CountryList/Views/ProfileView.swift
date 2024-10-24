@@ -30,7 +30,7 @@ struct ProfileView: View {
                         .frame(width: 100, height: 100)
                         .foregroundColor(.gray)
                         .padding()
-                        .overlay(Circle().stroke(.white, lineWidth: 4))
+                        .overlay(Circle().stroke(.colorBlack, lineWidth: 1))
 
                     VStack(spacing: 20) {
                         VStack(alignment: .leading) {
@@ -50,13 +50,13 @@ struct ProfileView: View {
                     .background(.ultraThinMaterial)
                     .cornerRadius(10)
                     .overlay(RoundedRectangle(cornerRadius: 12)
-                    .stroke(.white, lineWidth: 0.5))
+                        .stroke(.colorBlack, lineWidth: 0.5))
                     
                     // Displaying Name and Email
                     VStack(alignment: .center) {
                         Text("\(CommonStrings.CountryList.name): \(username)")
                             .font(.headline)
-                            .foregroundColor(.black)
+                            .foregroundColor(.colorBlack)
                             .padding(.vertical, 5)
                         
                         Text("\(CommonStrings.CountryList.email): \(email)")
@@ -64,7 +64,7 @@ struct ProfileView: View {
                             .foregroundColor(.gray)
                     }
                     .padding()
-                    .background(Color.white.opacity(0.5))
+                    .background(Color.colorWhite.opacity(0.5))
                     .cornerRadius(10)
                     .shadow(color: .gray.opacity(0.2), radius: 5, x: 0, y: 2)
                 }

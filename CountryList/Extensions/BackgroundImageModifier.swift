@@ -16,6 +16,7 @@ struct BackgroundImageModifier: ViewModifier {
                     .scaledToFill()
                     .blur(radius: 1)
                     .edgesIgnoringSafeArea(.all)
+                    .colorMultiply(.colorWhite)
             )
     }
 }

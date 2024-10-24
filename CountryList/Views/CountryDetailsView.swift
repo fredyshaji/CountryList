@@ -40,10 +40,10 @@ struct CountryDetailView: View {
                     Text(CommonStrings.CountryList.nationalSymbols)
                         .font(.title2)
                         .fontWeight(.bold)
-                        .foregroundColor(.black)
+                        .foregroundColor(.colorBlack)
                         .padding(.leading, 10)
                         .padding(.top, 10)
-                        .shadow(color: .white, radius: 5, x: 1, y: 2)
+                        .shadow(color: .colorWhite, radius: 5, x: 1, y: 2)
 
                     // Flag and Coat of Arms
                     HStack {
@@ -68,10 +68,10 @@ struct CountryDetailView: View {
                         Text(CommonStrings.CountryList.countryInfo)
                             .font(.title2)
                             .fontWeight(.bold)
-                            .foregroundColor(.black)
+                            .foregroundColor(.colorBlack)
                             .padding(.top, 10)
                             .padding(.leading, 10)
-                            .shadow(color: .white, radius: 5, x: 1, y: 2)
+                            .shadow(color: .colorWhite, radius: 5, x: 1, y: 2)
 
                         informationCard(title: CommonStrings.CountryList.officialName,
                                         value: country.name.official)
@@ -127,7 +127,7 @@ struct CountryDetailView: View {
                         Link(CommonStrings.CountryList.viewOnGmaps, destination: mapsURL)
                             .padding()
                             .font(.headline)
-                            .foregroundColor(.white)
+                            .foregroundColor(.colorWhite)
                             .frame(maxWidth: .infinity)
                             .background(Color.blue)
                             .cornerRadius(12)
@@ -165,7 +165,7 @@ struct CountryDetailView: View {
             Text(title)
                 .font(.subheadline)
                 .fontWeight(.medium)
-                .shadow(color: .black.opacity(0.5), radius: 5, x: 0, y: 2)
+                .shadow(color: .colorBlack.opacity(0.5), radius: 5, x: 0, y: 2)
         }
     }
 
@@ -175,19 +175,19 @@ struct CountryDetailView: View {
         VStack(alignment: .leading) {
             Text(title)
                 .font(.caption)
-                .foregroundColor(.black)
+                .foregroundColor(.colorBlack)
             Text(value)
                 .font(.headline)
                 .fontWeight(.regular)
-                .foregroundColor(.black)
+                .foregroundColor(.colorBlack)
         }
         .padding()
-        .background(Color.white.opacity(0.3))
+        .background(Color.colorWhite.opacity(0.3))
         .cornerRadius(12)
         .clipShape(Rectangle())
         .overlay(
                 RoundedRectangle(cornerRadius: 12)
-                    .stroke(.black, lineWidth: 0.2)
+                    .stroke(.colorBlack, lineWidth: 0.2)
             )
         .padding(.horizontal)
     }

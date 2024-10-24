@@ -18,9 +18,9 @@ struct ContinentCard: View {
                 .resizable()
                 .aspectRatio(contentMode: .fill)
                 .frame(width: 60, height: 60)
-                .background(isSelected ? .white : Color(.systemGray6)) // Highlight color when selected
+                .background(isSelected ? .colorWhite : Color(.systemGray6)) // Highlight color when selected
                 .clipShape(Circle())
-                .overlay(Circle().stroke(isSelected ? .white : .clear, lineWidth: 2)) // Highlight border
+                .overlay(Circle().stroke(isSelected ? .colorWhite : .clear, lineWidth: 2)) // Highlight border
                 .foregroundColor(isSelected ? .blue : .gray)
                 .padding(.top, 8)
 

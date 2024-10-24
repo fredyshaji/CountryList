@@ -10,7 +10,7 @@ import SwiftUI
 // View for a Single Region Card
 struct ContinentCard: View {
     let continent: Continent
-    var isSelected: Bool // New property to check if it's selected
+    var isSelected: Bool //property to check if it's selected
 
     var body: some View {
         VStack {

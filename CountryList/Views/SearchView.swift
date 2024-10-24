@@ -14,7 +14,7 @@ struct SearchView: View {
         NavigationView { // Wrap in a NavigationView
             VStack {
                 // Search Bar
-                TextField("Search for a country...", text: $viewModel.searchText)
+                TextField(CommonStrings.CountryList.searchForCountry, text: $viewModel.searchText)
                     .padding()
                     .background(Color(.systemGray6))
                     .cornerRadius(10)
@@ -48,7 +48,7 @@ struct SearchView: View {
                 .padding(.horizontal)
             }
             .withBackground()
-            .navigationTitle("Search Countries")
+            .navigationTitle(CommonStrings.CountryList.searchCountryTitle)
             
         }
     }

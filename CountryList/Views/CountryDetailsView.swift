@@ -11,7 +11,7 @@ import MapKit
 struct CountryDetailView: View {
     let country: CountryItem
     
-    // State variables to hold the map position
+    // State variable to hold the map position
     @State private var cameraPosition: MapCameraPosition
     
     init(country: CountryItem) {
@@ -45,7 +45,7 @@ struct CountryDetailView: View {
                         .shadow(color: .black.opacity(0.5), radius: 5, x: 0, y: 2) // Added shadow
                     
                     // National Symbols Title
-                    Text("National Symbols")
+                    Text(CommonStrings.CountryList.nationalSymbols)
                         .font(.title2)
                         .fontWeight(.bold)
                         .foregroundColor(.indigo)
@@ -55,11 +55,13 @@ struct CountryDetailView: View {
                     // Flag and Coat of Arms
                     HStack(spacing: 20) {
                         // Flag
-                        countrySymbolView(imageURL: country.flags.png, title: "Flag")
+                        countrySymbolView(imageURL: country.flags.png,
+                                          title: CommonStrings.CountryList.flag)
                         
                         // Coat of Arms
                         if let imageString = country.coatOfArms.png, let coatOfArmsURL = URL(string: imageString) {
-                            countrySymbolView(imageURL: coatOfArmsURL.absoluteString, title: "Coat of Arms")
+                            countrySymbolView(imageURL: coatOfArmsURL.absoluteString,
+                                              title: CommonStrings.CountryList.coatOfArms)
                         }
                     }
                     .padding(.horizontal)
@@ -73,34 +75,42 @@ struct CountryDetailView: View {
                             .foregroundColor(.indigo)
                             .padding(.bottom, 10)
                         
-                        informationCard(title: "Official Name", value: country.name.official)
-                        informationCard(title: "Common Name", value: country.name.common)
-                        informationCard(title: "Native Name", value: country.name.nativeName?.values.first?.common ?? "N/A")
-                        informationCard(title: "Continent", value: country.continents.map { $0.rawValue }.joined(separator: ", "))
+                        informationCard(title: CommonStrings.CountryList.officialName,
+                                        value: country.name.official)
+                        informationCard(title: CommonStrings.CountryList.commonName,
+                                        value: country.name.common)
+                        informationCard(title: CommonStrings.CountryList.nativeName,
+                                        value: country.name.nativeName?.values.first?.common ?? "N/A")
+                        informationCard(title: CommonStrings.CountryList.continent, value: country.continents.map { $0.rawValue }.joined(separator: ", "))
                         
                         if let currency = country.currencies?.first?.value {
-                            informationCard(title: "Currency", value: "\(currency.name) (\(currency.symbol))")
+                            informationCard(title: CommonStrings.CountryList.currency, value: "\(currency.name) (\(currency.symbol))")
                         }
                         
                         if let demonyms = country.demonyms {
-                            informationCard(title: "Demonym (English)", value: demonyms.eng.f)
+                            informationCard(title: CommonStrings.CountryList.demonymEnglish,
+                                            value: demonyms.eng.f)
                             if let fra = demonyms.fra?.f {
-                                informationCard(title: "Demonym (French)", value: fra)
+                                informationCard(title: CommonStrings.CountryList.demonymFrench,
+                                                value: fra)
                             }
                         }
                         
-                        informationCard(title: "Latitude", value: "\(country.latlng.first ?? 0)")
-                        informationCard(title: "Longitude", value: "\(country.latlng.last ?? 0)")
+                        informationCard(title: CommonStrings.CountryList.latitude,
+                                        value: "\(country.latlng.first ?? 0)")
+                        informationCard(title: CommonStrings.CountryList.longitude,
+                                        value: "\(country.latlng.last ?? 0)")
                         
                         if let borders = country.borders, !borders.isEmpty {
-                            informationCard(title: "Borders", value: borders.joined(separator: ", "))
+                            informationCard(title: CommonStrings.CountryList.borders,
+                                            value: borders.joined(separator: ", "))
                         }
                     }
                     .padding()
                     
                     // Google Maps Link
                     if let mapsURL = URL(string: country.maps.googleMaps) {
-                        Link("View on Google Maps", destination: mapsURL)
+                        Link(CommonStrings.CountryList.viewOnGmaps, destination: mapsURL)
                             .padding()
                             .font(.headline)
                             .foregroundColor(.white)
@@ -161,7 +171,6 @@ struct CountryDetailView: View {
         .padding()
         .background(Color.white.opacity(0.2))
         .cornerRadius(12)
-//        .shadow(radius: 5)
         .padding(.horizontal)
     }
 }

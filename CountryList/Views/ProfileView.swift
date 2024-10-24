@@ -15,7 +15,7 @@ struct ProfileView: View {
         ZStack {
             VStack {
                 // Title
-                Text("Profile")
+                Text(CommonStrings.CountryList.profile)
                     .font(.largeTitle)
                     .bold()
                     .padding([.leading, .top])
@@ -26,20 +26,20 @@ struct ProfileView: View {
                     .resizable()
                     .scaledToFill()
                     .frame(width: 100, height: 100)
-                    .foregroundColor(.gray) // Change color as needed
+                    .foregroundColor(.gray)
                     .padding()
                 
                 // User Information
                 VStack(alignment: .center, spacing: 16) {
                     VStack(spacing: 20) {
                         VStack(alignment: .leading) {
-                            Text("Name")
+                            Text(CommonStrings.CountryList.name)
                                 .font(.footnote)
-                            TextField("Name", text: $username)
+                            TextField(CommonStrings.CountryList.name, text: $username)
                                 .padding(.bottom, 10)
-                            Text("Email")
+                            Text(CommonStrings.CountryList.email)
                                 .font(.footnote)
-                            TextField("Email", text: $email)
+                            TextField(CommonStrings.CountryList.email, text: $email)
                         }
                         .textFieldStyle(RoundedBorderTextFieldStyle())
                     }
@@ -51,12 +51,12 @@ struct ProfileView: View {
                     
                     // Displaying Name and Email
                     VStack(alignment: .leading) {
-                        Text("Name: \(username)")
+                        Text("\(CommonStrings.CountryList.name): \(username)")
                             .font(.headline)
                             .foregroundColor(.black)
                             .padding(.vertical, 5)
                         
-                        Text("Email: \(email)")
+                        Text("\(CommonStrings.CountryList.email): \(email)")
                             .font(.subheadline)
                             .foregroundColor(.gray)
                     }

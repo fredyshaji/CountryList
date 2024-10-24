@@ -17,17 +17,17 @@ struct HomeView: View {
                 RegionView(viewModel: viewModel)
                     .tabItem {
                         Image(systemName: "house.fill")
-                        Text("Home")
+                        Text(CommonStrings.CountryList.home)
                     }
                 SearchView(viewModel: viewModel)
                     .tabItem {
                         Image(systemName: "magnifyingglass")
-                        Text("Search")
+                        Text(CommonStrings.CountryList.search)
                     }
                 ProfileView()
                     .tabItem {
                         Image(systemName: "person.fill")
-                        Text("Profile")
+                        Text(CommonStrings.CountryList.profile)
                     }
             }
             .accentColor(.indigo)
@@ -41,12 +41,12 @@ struct HomeView: View {
                     startPoint: .top,
                     endPoint: .bottom
                 )
-                .frame(height: 100) // Adjust height to your liking
+                .frame(height: 100)
                 .shadow(color: Color.black.opacity(0.1), radius: 10, x: 0, y: -5) // Shadow for depth
                 .allowsHitTesting(false)
                 
             }
-            .edgesIgnoringSafeArea(.bottom) // Ignore safe area to ensure it aligns with tab bar
+            .edgesIgnoringSafeArea(.bottom)
         }
     }
 }

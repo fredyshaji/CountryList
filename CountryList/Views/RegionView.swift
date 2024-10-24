@@ -19,7 +19,7 @@ struct RegionView: View {
         NavigationStack {
             ZStack {
                 VStack(alignment: .leading) {
-                    Text("Explore Countries")
+                    Text(CommonStrings.CountryList.exploreCountries)
                         .font(.largeTitle)
                         .bold()
                         .padding([.leading, .top])
@@ -40,14 +40,14 @@ struct RegionView: View {
                         }
                     }
                     
-                    Text("Countries in \(viewModel.selectedContinent.rawValue)")
+                    Text("\(CommonStrings.CountryList.countriesIn) \(viewModel.selectedContinent.rawValue)")
                         .font(.title)
                         .bold()
                         .padding([.leading])
                         .foregroundColor(.indigo)
                     
                     if viewModel.isLoading {
-                        ProgressView("Loading countries...")
+                        ProgressView(CommonStrings.CountryList.loadingCountries)
                             .progressViewStyle(CircularProgressViewStyle())
                             .frame(maxWidth: .infinity, maxHeight: .infinity) // Take up all available space
                             .background(Color.gray.opacity(0.2))

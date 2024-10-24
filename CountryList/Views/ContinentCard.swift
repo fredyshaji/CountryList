@@ -17,24 +17,26 @@ struct ContinentCard: View {
             Image(systemName: continent.image)
                 .resizable()
                 .aspectRatio(contentMode: .fill)
-                .frame(width: 70, height: 70)
-                .background(isSelected ? Color.blue : Color(.systemGray6)) // Highlight color when selected
+                .frame(width: 60, height: 60)
+                .background(isSelected ? .white : Color(.systemGray6)) // Highlight color when selected
                 .clipShape(Circle())
-                .overlay(Circle().stroke(isSelected ? Color.white : Color.clear, lineWidth: 2)) // Highlight border
-                .foregroundColor(.cyan)
+                .overlay(Circle().stroke(isSelected ? .white : .clear, lineWidth: 2)) // Highlight border
+                .foregroundColor(isSelected ? .blue : .gray)
+                .padding(.top, 8)
+
 
             Text(continent.rawValue)
                 .font(.headline)
                 .padding(.top, 5)
-                .foregroundColor(.indigo)
+                .foregroundColor(isSelected ? .blue : .gray)
                 .minimumScaleFactor(0.6)
+            Spacer()
         }
-        .frame(width: 90, height: 120)
+        .frame(width: 100, height: 135)
         .shadow(radius: 5)
-        .padding(.horizontal, 8)
     }
 }
 
 #Preview {
-    ContinentCard(continent: .africa, isSelected: false)
+    ContinentCard(continent: .southAmerica, isSelected: false)
 }

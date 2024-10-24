@@ -28,11 +28,15 @@ struct SearchView: View {
                                 AsyncImage(url: URL(string: country.flags.png)) { image in
                                     image
                                         .resizable()
-                                        .scaledToFit()
-                                        .frame(width: 40, height: 30)
+                                        .scaledToFill()
+                                        .frame(width: 40, height: 40)
+                                        .clipShape(Circle())
+                                        .overlay(Circle().stroke(.black, lineWidth: 0.5))
                                 } placeholder: {
-                                    Color.gray
-                                        .frame(width: 40, height: 30)
+                                    Image(systemName: "flag.circle")
+                                        .frame(width: 40, height: 40)
+                                        .clipShape(Circle())
+                                        .overlay(Circle().stroke(.black, lineWidth: 0.5))
                                 }
                                 Text(country.name.common)
                             }
@@ -40,9 +44,12 @@ struct SearchView: View {
                     }
                 }
                 .listStyle(PlainListStyle())
+                .cornerRadius(10)
+                .padding(.horizontal)
             }
             .withBackground()
             .navigationTitle("Search Countries")
+            
         }
     }
 }

@@ -16,22 +16,25 @@ struct CountryCard: View {
                 AsyncImage(url: URL(string: country.flags.png)) { image in
                     image
                         .resizable()
-                        .scaledToFit()
+                        .scaledToFill()
                 } placeholder: {
-                    Color.indigo // Placeholder while loading
+                    Image(systemName: "photo")
+                        .resizable()
+                        .scaledToFill()
+                        .foregroundStyle(.gray)
                 }
-                .frame(width: 100, height: 70)
+                .frame(width: 90, height: 60)
                 .cornerRadius(10)
 
-                Text(country.name.official)
+                Text(country.name.common)
                     .font(.headline)
                     .padding(.top, 5)
-                    .foregroundStyle(.indigo)
+                    .foregroundStyle(.black)
                     .minimumScaleFactor(0.4)
+                Spacer()
             }
-            .frame(width: UIScreen.screenWidth/3, height: 150)
+            .frame(width: UIScreen.screenWidth/3 - 20, height: 130)
             .shadow(radius: 5)
-            .padding(.horizontal, 8)
         }
     }
 }

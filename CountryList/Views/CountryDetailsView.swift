@@ -25,6 +25,7 @@ struct CountryDetailView: View {
     
     var body: some View {
         ZStack {
+            
             // Background map
             Map(position: $cameraPosition)
                 .edgesIgnoringSafeArea(.all)
@@ -37,7 +38,7 @@ struct CountryDetailView: View {
                     Text(country.name.common)
                         .font(.largeTitle)
                         .fontWeight(.bold)
-                        .foregroundColor(.indigo)
+                        .foregroundColor(.black)
                         .frame(maxWidth: .infinity)
                         .padding(.top)
                         .padding(.horizontal)
@@ -71,7 +72,7 @@ struct CountryDetailView: View {
                             .fontWeight(.bold)
                             .foregroundColor(.indigo)
                             .padding(.bottom, 10)
-
+                        
                         informationCard(title: "Official Name", value: country.name.official)
                         informationCard(title: "Common Name", value: country.name.common)
                         informationCard(title: "Native Name", value: country.name.nativeName?.values.first?.common ?? "N/A")
@@ -115,6 +116,7 @@ struct CountryDetailView: View {
             }
             .background(Color.gray.opacity(0.3))
         }
+        .withBackground()
         .navigationTitle(country.name.common)
         .navigationBarTitleDisplayMode(.inline)
     }
@@ -150,16 +152,16 @@ struct CountryDetailView: View {
     func informationCard(title: String, value: String) -> some View {
         VStack(alignment: .leading) {
             Text(title)
-                .font(.headline)
-                .foregroundColor(.secondary)
+                .font(.caption)
+                .foregroundColor(.black)
             Text(value)
-                .font(.body)
+                .font(.subheadline)
                 .fontWeight(.regular)
         }
         .padding()
-        .background(Color.white)
+        .background(Color.white.opacity(0.2))
         .cornerRadius(12)
-        .shadow(radius: 5)
+//        .shadow(radius: 5)
         .padding(.horizontal)
     }
 }
@@ -191,7 +193,7 @@ struct CountryDetailView: View {
             translations: [ "ara": Translation(official: "Ø¬ÙˆØ±Ø¬ÙŠØ§ Ø§Ù„Ø¬Ù†ÙˆØ¨ÙŠØ© ÙˆØ¬Ø²Ø± Ø³Ø§Ù†Ø¯ÙˆØªØ´ Ø§Ù„Ø¬Ù†ÙˆØ¨ÙŠØ©", common: "Ø¬ÙˆØ±Ø¬ÙŠØ§ Ø§Ù„Ø¬Ù†ÙˆØ¨ÙŠØ©"),
                             "bre": Translation(official: "Georgia ar Su hag Inizi Sandwich ar Su", common: "Georgia ar Su hag Inizi Sandwich ar Su"),
                             "swe": Translation(official: "Sydgeorgien", common: "Sydgeorgien")],
-            latlng: [-54.5, -37.0],
+            latlng: [20.7572855,72.1093036],
             landlocked: false,
             area: 3903.0,
             demonyms: Demonyms(
@@ -210,7 +212,7 @@ struct CountryDetailView: View {
                          alt: ""),
             coatOfArms: CoatOfArms(png: "", svg: ""),
             startOfWeek: .monday,
-            capitalInfo: CapitalInfo(latlng: [-54.28, -36.5]),
+            capitalInfo: CapitalInfo(latlng: [20.7572855,72.1093036]),
             cioc: "",
             subregion: "",
             fifa: "",

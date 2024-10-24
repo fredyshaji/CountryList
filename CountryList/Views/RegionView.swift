@@ -39,12 +39,11 @@ struct RegionView: View {
                             }
                         }
                     }
-                    .padding(.vertical, 10)
                     
                     Text("Countries in \(viewModel.selectedContinent.rawValue)")
                         .font(.title)
                         .bold()
-                        .padding([.leading, .top])
+                        .padding([.leading])
                         .foregroundColor(.indigo)
                     
                     if viewModel.isLoading {
@@ -59,12 +58,16 @@ struct RegionView: View {
                                 .padding()
                         } else {
                             ScrollView {
-                                LazyVGrid(columns: columns, spacing: 20) {
+                                LazyVGrid(columns: columns,
+                                          spacing: 5
+                                ) {
                                     ForEach(viewModel.countries) { country in
                                         CountryCard(country: country)
                                     }
                                 }
+                                .padding()
                             }
+                            
                         }
                     }
                     Spacer()

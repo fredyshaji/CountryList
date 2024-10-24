@@ -12,45 +12,48 @@ struct SearchView: View {
     
     var body: some View {
         NavigationStack {
-            VStack(alignment: .leading) {
-                Text(CommonStrings.CountryList.searchCountryTitle)
-                    .font(.largeTitle)
-                    .bold()
-                    .padding([.leading, .top])
-                    .foregroundColor(.indigo)
-                // Search Bar
-                TextField(CommonStrings.CountryList.searchForCountry, text: $viewModel.searchText)
-                    .padding()
-                    .background(Color(.systemGray6))
-                    .cornerRadius(10)
-                    .padding(.horizontal)
-
-                // List of filtered countries
-                List {
-                    ForEach(viewModel.filteredCountries, id: \.id) { country in
-                        NavigationLink(destination: CountryDetailView(country: country)) { // Navigate to CountryDetailsView
-                            HStack {
-                                AsyncImage(url: URL(string: country.flags.png)) { image in
-                                    image
-                                        .resizable()
-                                        .scaledToFill()
-                                        .frame(width: 40, height: 40)
-                                        .clipShape(Circle())
-                                        .overlay(Circle().stroke(.black, lineWidth: 0.5))
-                                } placeholder: {
-                                    Image(systemName: "flag.circle")
-                                        .frame(width: 40, height: 40)
-                                        .clipShape(Circle())
-                                        .overlay(Circle().stroke(.black, lineWidth: 0.5))
+            ZStack {
+                VStack(alignment: .leading) {
+                    Text(CommonStrings.CountryList.searchCountryTitle)
+                        .font(.largeTitle)
+                        .bold()
+                        .padding([.leading, .top])
+                        .foregroundColor(.indigo)
+                    // Search Bar
+                    TextField(CommonStrings.CountryList.searchForCountry, text: $viewModel.searchText)
+                        .padding()
+                        .background(Color(.systemGray6))
+                        .cornerRadius(10)
+                        .padding(.horizontal)
+                    
+                    // List of filtered countries
+                    List {
+                        ForEach(viewModel.filteredCountries, id: \.id) { country in
+                            NavigationLink(destination: CountryDetailView(country: country)) { // Navigate to CountryDetailsView
+                                HStack {
+                                    AsyncImage(url: URL(string: country.flags.png)) { image in
+                                        image
+                                            .resizable()
+                                            .scaledToFill()
+                                            .frame(width: 40, height: 40)
+                                            .clipShape(Circle())
+                                            .overlay(Circle().stroke(.black, lineWidth: 0.5))
+                                    } placeholder: {
+                                        Image(systemName: "flag.circle")
+                                            .frame(width: 40, height: 40)
+                                            .clipShape(Circle())
+                                            .overlay(Circle().stroke(.black, lineWidth: 0.5))
+                                    }
+                                    Text(country.name.common)
                                 }
-                                Text(country.name.common)
                             }
                         }
                     }
+                    .listStyle(PlainListStyle())
+                    .cornerRadius(10)
+                    .padding()
                 }
-                .listStyle(PlainListStyle())
-                .cornerRadius(10)
-                .padding(.horizontal)
+                
             }
             .withBackground()
         }

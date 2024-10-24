@@ -9,6 +9,8 @@ import SwiftUI
 
 struct RegionView: View {
     @ObservedObject var viewModel: HomeViewModel
+    @State private var position = ScrollPosition(edge: .top)
+
     private let columns = [
         GridItem(.flexible()),
         GridItem(.flexible()),
@@ -31,6 +33,7 @@ struct RegionView: View {
                                 Button(action: {
                                     viewModel.selectedContinent = continent
                                     viewModel.filterCountriesByContinent() // Filter countries
+                                    position.scrollTo(edge: .top)
                                 }) {
                                     ContinentCard(
                                         continent: continent,
@@ -67,7 +70,7 @@ struct RegionView: View {
                                 }
                                 .padding()
                             }
-                            
+                            .scrollPosition($position)
                         }
                     }
                     Spacer()

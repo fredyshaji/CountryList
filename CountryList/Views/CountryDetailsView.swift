@@ -25,15 +25,14 @@ struct CountryDetailView: View {
     
     var body: some View {
         ZStack {
-            
             // Background map
             Map(position: $cameraPosition)
                 .edgesIgnoringSafeArea(.all)
-                .opacity(0.5) // Make map slightly transparent for better readability
-            
+                .opacity(0.5)
+
             // Scrollable content
             ScrollView {
-                VStack(alignment: .leading, spacing: 16) {
+                VStack(alignment: .leading) {
                     // Country Name
                     Text(country.name.common)
                         .font(.largeTitle)
@@ -42,18 +41,19 @@ struct CountryDetailView: View {
                         .frame(maxWidth: .infinity)
                         .padding(.top)
                         .padding(.horizontal)
-                        .shadow(color: .black.opacity(0.5), radius: 5, x: 0, y: 2) // Added shadow
-                    
+                        .shadow(color: .white, radius: 5, x: 2, y: 2) // Added shadow
+
                     // National Symbols Title
                     Text(CommonStrings.CountryList.nationalSymbols)
                         .font(.title2)
                         .fontWeight(.bold)
-                        .foregroundColor(.accentColor)
-                        .padding()
-                        .shadow(color: .black.opacity(0.5), radius: 5, x: 0, y: 2)
-                    
+                        .foregroundColor(.black)
+                        .padding(.leading, 10)
+                        .padding(.top, 10)
+                        .shadow(color: .white, radius: 5, x: 1, y: 2)
+
                     // Flag and Coat of Arms
-                    HStack(spacing: 20) {
+                    HStack {
                         // Flag
                         countrySymbolView(imageURL: country.flags.png,
                                           title: CommonStrings.CountryList.flag)
@@ -65,16 +65,18 @@ struct CountryDetailView: View {
                         }
                     }
                     .padding(.horizontal)
-                    
-                    
+
+
                     // Country Information Section
                     VStack(alignment: .leading, spacing: 15) {
                         Text("Country Information")
                             .font(.title2)
                             .fontWeight(.bold)
-                            .foregroundColor(.accentColor)
-                            .padding(.bottom, 10)
-                        
+                            .foregroundColor(.black)
+                            .padding(.top, 10)
+                            .padding(.leading, 10)
+                            .shadow(color: .white, radius: 5, x: 1, y: 2)
+
                         informationCard(title: CommonStrings.CountryList.officialName,
                                         value: country.name.official)
                         informationCard(title: CommonStrings.CountryList.commonName,
@@ -106,7 +108,6 @@ struct CountryDetailView: View {
                                             value: borders.joined(separator: ", "))
                         }
                     }
-                    .padding()
                     
                     // Google Maps Link
                     if let mapsURL = URL(string: country.maps.googleMaps) {
@@ -120,9 +121,7 @@ struct CountryDetailView: View {
                             .padding(.horizontal)
                     }
                 }
-                .padding()
                 .cornerRadius(15)
-                .padding(.horizontal)
             }
             .background(Color.gray.opacity(0.3))
         }
@@ -139,17 +138,15 @@ struct CountryDetailView: View {
                 image
                     .resizable()
                     .scaledToFit()
-                    .frame(width: 150, height: 100)
-                    .cornerRadius(10)
+                    .frame(width: 120, height: 80)
                     .shadow(radius: 5)
-                    .overlay(RoundedRectangle(cornerRadius: 10).stroke(Color.gray, lineWidth: 2))
-                    .background(Color.white.opacity(0.9))
-                    .clipShape(RoundedRectangle(cornerRadius: 10))
+                    .background(.clear)
             } placeholder: {
-                Color.blue
-                    .frame(width: 150, height: 100)
-                    .cornerRadius(10)
+                Image(systemName: "photo")
+                    .frame(width: 120, height: 80)
+                    .foregroundStyle(.gray)
             }
+
             Text(title)
                 .font(.subheadline)
                 .fontWeight(.medium)
@@ -165,12 +162,18 @@ struct CountryDetailView: View {
                 .font(.caption)
                 .foregroundColor(.black)
             Text(value)
-                .font(.subheadline)
+                .font(.headline)
                 .fontWeight(.regular)
+                .foregroundColor(.black)
         }
         .padding()
-        .background(Color.white.opacity(0.2))
+        .background(Color.white.opacity(0.3))
         .cornerRadius(12)
+        .clipShape(Rectangle())
+        .overlay(
+                RoundedRectangle(cornerRadius: 12)
+                    .stroke(.black, lineWidth: 0.2)
+            )
         .padding(.horizontal)
     }
 }

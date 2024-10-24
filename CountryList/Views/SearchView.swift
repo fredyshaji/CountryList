@@ -11,8 +11,13 @@ struct SearchView: View {
     @ObservedObject var viewModel: HomeViewModel // Accept HomeViewModel instance
     
     var body: some View {
-        NavigationView { // Wrap in a NavigationView
-            VStack {
+        NavigationStack {
+            VStack(alignment: .leading) {
+                Text(CommonStrings.CountryList.searchCountryTitle)
+                    .font(.largeTitle)
+                    .bold()
+                    .padding([.leading, .top])
+                    .foregroundColor(.indigo)
                 // Search Bar
                 TextField(CommonStrings.CountryList.searchForCountry, text: $viewModel.searchText)
                     .padding()
@@ -48,8 +53,6 @@ struct SearchView: View {
                 .padding(.horizontal)
             }
             .withBackground()
-            .navigationTitle(CommonStrings.CountryList.searchCountryTitle)
-            
         }
     }
 }

@@ -5,6 +5,7 @@
 //  Created by p901nyy on 2024-10-24.
 //
 
+//TODO:- Localize if needed
 struct CommonStrings {
     struct CountryList {
         static let nationalSymbols = "National Symbols"

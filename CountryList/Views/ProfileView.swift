@@ -13,24 +13,24 @@ struct ProfileView: View {
     
     var body: some View {
         ZStack {
-            VStack {
+            VStack(alignment: .leading) {
                 // Title
                 Text(CommonStrings.CountryList.profile)
                     .font(.largeTitle)
                     .bold()
                     .padding([.leading, .top])
                     .foregroundColor(.indigo)
-
-                // Profile Image
-                Image(systemName: "person.circle.fill") // Default profile icon
-                    .resizable()
-                    .scaledToFill()
-                    .frame(width: 100, height: 100)
-                    .foregroundColor(.gray)
-                    .padding()
                 
                 // User Information
                 VStack(alignment: .center, spacing: 16) {
+                    // Profile Image
+                    Image(systemName: "person.circle.fill") // Default profile icon
+                        .resizable()
+                        .scaledToFill()
+                        .frame(width: 100, height: 100)
+                        .foregroundColor(.gray)
+                        .padding()
+
                     VStack(spacing: 20) {
                         VStack(alignment: .leading) {
                             Text(CommonStrings.CountryList.name)
@@ -50,7 +50,7 @@ struct ProfileView: View {
                     .cornerRadius(10)
                     
                     // Displaying Name and Email
-                    VStack(alignment: .leading) {
+                    VStack(alignment: .center) {
                         Text("\(CommonStrings.CountryList.name): \(username)")
                             .font(.headline)
                             .foregroundColor(.black)
@@ -68,7 +68,6 @@ struct ProfileView: View {
                 .padding()
                 Spacer()
             }
-            .padding()
         }
         .withBackground()
     }

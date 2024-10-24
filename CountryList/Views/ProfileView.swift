@@ -19,7 +19,7 @@ struct ProfileView: View {
                     .font(.largeTitle)
                     .bold()
                     .padding([.leading, .top])
-                    .foregroundColor(.indigo)
+                    .foregroundColor(.accentColor)
                 
                 // User Information
                 VStack(alignment: .center, spacing: 16) {

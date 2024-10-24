@@ -48,7 +48,7 @@ struct CountryDetailView: View {
                     Text(CommonStrings.CountryList.nationalSymbols)
                         .font(.title2)
                         .fontWeight(.bold)
-                        .foregroundColor(.indigo)
+                        .foregroundColor(.accentColor)
                         .padding()
                         .shadow(color: .black.opacity(0.5), radius: 5, x: 0, y: 2)
                     
@@ -72,7 +72,7 @@ struct CountryDetailView: View {
                         Text("Country Information")
                             .font(.title2)
                             .fontWeight(.bold)
-                            .foregroundColor(.indigo)
+                            .foregroundColor(.accentColor)
                             .padding(.bottom, 10)
                         
                         informationCard(title: CommonStrings.CountryList.officialName,

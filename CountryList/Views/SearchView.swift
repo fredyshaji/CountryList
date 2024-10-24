@@ -18,7 +18,7 @@ struct SearchView: View {
                         .font(.largeTitle)
                         .bold()
                         .padding([.leading, .top])
-                        .foregroundColor(.indigo)
+                        .foregroundColor(.accentColor)
                     // Search Bar
                     TextField(CommonStrings.CountryList.searchForCountry, text: $viewModel.searchText)
                         .padding()

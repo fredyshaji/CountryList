@@ -30,7 +30,7 @@ struct HomeView: View {
                         Text(CommonStrings.CountryList.profile)
                     }
             }
-            .accentColor(.indigo)
+            .accentColor(.accentColor)
             
             // Gradient or shadow above tab bar
             VStack {

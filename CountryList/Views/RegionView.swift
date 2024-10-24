@@ -23,7 +23,7 @@ struct RegionView: View {
                         .font(.largeTitle)
                         .bold()
                         .padding([.leading, .top])
-                        .foregroundColor(.indigo)
+                        .foregroundColor(.accentColor)
                     
                     ScrollView(.horizontal, showsIndicators: false) {
                         HStack {
@@ -44,7 +44,7 @@ struct RegionView: View {
                         .font(.title)
                         .bold()
                         .padding([.leading])
-                        .foregroundColor(.indigo)
+                        .foregroundColor(.accentColor)
                     
                     if viewModel.isLoading {
                         ProgressView(CommonStrings.CountryList.loadingCountries)

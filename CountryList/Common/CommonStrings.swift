@@ -33,5 +33,6 @@ struct CommonStrings {
         static let searchForCountry = "Search for a country..."
         static let searchCountryTitle = "Search Countries"
         static let appTitle = "Country Explorer"
+        static let countryInfo = "Country Information"
     }
 }

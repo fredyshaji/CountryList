@@ -33,15 +33,6 @@ struct CountryDetailView: View {
             // Scrollable content
             ScrollView {
                 VStack(alignment: .leading) {
-                    // Country Name
-                    Text(country.name.common)
-                        .font(.largeTitle)
-                        .fontWeight(.bold)
-                        .foregroundColor(.black)
-                        .frame(maxWidth: .infinity)
-                        .padding(.top)
-                        .padding(.horizontal)
-                        .shadow(color: .white, radius: 5, x: 2, y: 2) // Added shadow
 
                     // National Symbols Title
                     Text(CommonStrings.CountryList.nationalSymbols)
@@ -68,8 +59,8 @@ struct CountryDetailView: View {
 
 
                     // Country Information Section
-                    VStack(alignment: .leading, spacing: 15) {
-                        Text("Country Information")
+                    VStack(alignment: .leading, spacing: 10) {
+                        Text(CommonStrings.CountryList.countryInfo)
                             .font(.title2)
                             .fontWeight(.bold)
                             .foregroundColor(.black)
@@ -122,12 +113,14 @@ struct CountryDetailView: View {
                     }
                 }
                 .cornerRadius(15)
+                .padding(.leading, 10)
             }
             .background(Color.gray.opacity(0.3))
         }
         .withBackground()
+        .navigationBarTitleDisplayMode(NavigationBarItem.TitleDisplayMode.large)
         .navigationTitle(country.name.common)
-        .navigationBarTitleDisplayMode(.inline)
+        .toolbarBackground(.hidden, for: .navigationBar)
     }
     
     // Helper function to create a country symbol view

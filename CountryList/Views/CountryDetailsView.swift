@@ -10,12 +10,14 @@ import MapKit
 
 struct CountryDetailView: View {
     let country: CountryItem
+    let viewModel: CountryDetailVM
     
     // State variable to hold the map position
     @State private var cameraPosition: MapCameraPosition
     
     init(country: CountryItem) {
         self.country = country
+        viewModel = CountryDetailVM(country: country)
         // Initialize the map region with the country's latitude and longitude
         let latitude = country.latlng.first ?? 0
         let longitude = country.latlng.last ?? 0
@@ -57,6 +59,9 @@ struct CountryDetailView: View {
                     }
                     .padding(.horizontal)
 
+                    if let flagInfo = country.flags.alt {
+                        informationCard(title: "", value: flagInfo)
+                    }
 
                     // Country Information Section
                     VStack(alignment: .leading, spacing: 10) {
@@ -70,34 +75,51 @@ struct CountryDetailView: View {
 
                         informationCard(title: CommonStrings.CountryList.officialName,
                                         value: country.name.official)
-                        informationCard(title: CommonStrings.CountryList.commonName,
-                                        value: country.name.common)
-                        informationCard(title: CommonStrings.CountryList.nativeName,
-                                        value: country.name.nativeName?.values.first?.common ?? "N/A")
-                        informationCard(title: CommonStrings.CountryList.continent, value: country.continents.map { $0.rawValue }.joined(separator: ", "))
-                        
-                        if let currency = country.currencies?.first?.value {
-                            informationCard(title: CommonStrings.CountryList.currency, value: "\(currency.name) (\(currency.symbol))")
+                        if let nativeName = country.name.nativeName?.values.first?.official {
+                            informationCard(title: CommonStrings.CountryList.nativeName,
+                                            value: nativeName)
                         }
-                        
+
+                        if let capital = country.capital {
+                            informationCard(title: CommonStrings.CountryList.capital,
+                                            value: capital.map { $0 }.joined(separator: ", "))
+                        }
+
+                        let continentCardDetails = viewModel.getContinentCardText()
+                        informationCard(
+                            title: continentCardDetails.0,
+                            value: continentCardDetails.1)
+
                         if let demonyms = country.demonyms {
                             informationCard(title: CommonStrings.CountryList.demonymEnglish,
                                             value: demonyms.eng.f)
-                            if let fra = demonyms.fra?.f {
-                                informationCard(title: CommonStrings.CountryList.demonymFrench,
-                                                value: fra)
-                            }
                         }
-                        
-                        informationCard(title: CommonStrings.CountryList.latitude,
-                                        value: "\(country.latlng.first ?? 0)")
-                        informationCard(title: CommonStrings.CountryList.longitude,
-                                        value: "\(country.latlng.last ?? 0)")
+
+                        if let currency = country.currencies?.first?.value {
+                            informationCard(title: CommonStrings.CountryList.currency, value: "\(currency.name) (\(currency.symbol))")
+                        }
+                        informationCard(title: CommonStrings.CountryList.area,
+                                        value: "\(country.area) sq.km")
+                        informationCard(title: CommonStrings.CountryList.population,
+                                        value: country.population.formatted(.number.notation(.compactName)))
+
+                        let latLongcardText = viewModel.getLatLongCardText()
+                        informationCard(title: latLongcardText.0,
+                                        value: latLongcardText.1)
+
+                        if let languages = country.languages {
+                            informationCard(title: CommonStrings.CountryList.languages,
+                                            value: languages.map { $0.value }
+                                .joined(separator: ", "))
+                        }
                         
                         if let borders = country.borders, !borders.isEmpty {
                             informationCard(title: CommonStrings.CountryList.borders,
                                             value: borders.joined(separator: ", "))
                         }
+                        informationCard(title: CommonStrings.CountryList.timeZones,
+                                        value: viewModel
+                            .formatTimeZoneText())
                     }
                     
                     // Google Maps Link

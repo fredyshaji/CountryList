@@ -16,8 +16,7 @@ struct CommonStrings {
         static let nativeName = "Native Name"
         static let continent = "Continent"
         static let currency = "Currency"
-        static let demonymEnglish = "Demonym (English)"
-        static let demonymFrench = "Demonym (French)"
+        static let demonymEnglish = "Demonym"
         static let latitude = "Latitude"
         static let longitude = "Longitude"
         static let borders = "Borders"
@@ -34,5 +33,12 @@ struct CommonStrings {
         static let searchCountryTitle = "Search Countries"
         static let appTitle = "Country Explorer"
         static let countryInfo = "Country Information"
+        static let region = "Region"
+        static let subRegion = "SubRegion"
+        static let languages = "Languages"
+        static let area = "Area"
+        static let population = "Population"
+        static let timeZones = "TimeZones(UTC)"
+        static let capital = "Capital"
     }
 }

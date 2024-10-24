@@ -47,7 +47,7 @@ class HomeViewModel: ObservableObject {
                 guard let self else { return }
                 
                 // Create a mapping of cca3 to official country names
-                let cca3ToOfficialName = Dictionary(uniqueKeysWithValues: countries.map { ($0.cca3, $0.name.official) })
+                let cca3ToOfficialName = Dictionary(uniqueKeysWithValues: countries.map { ($0.cca3, $0.name.common) })
                 
                 // Update allCountries and map borders to their official names
                 self.allCountries = countries.map { country in
@@ -76,7 +76,8 @@ class HomeViewModel: ObservableObject {
             return allCountries
         } else {
             return allCountries.filter { country in
-                country.name.common.lowercased().contains(searchText.lowercased())
+                country.name.common.lowercased().contains(searchText.lowercased()) ||
+                country.name.official.lowercased().contains(searchText.lowercased())
             }
         }
     }

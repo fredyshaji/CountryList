@@ -30,6 +30,7 @@ struct ProfileView: View {
                         .frame(width: 100, height: 100)
                         .foregroundColor(.gray)
                         .padding()
+                        .overlay(Circle().stroke(.white, lineWidth: 4))
 
                     VStack(spacing: 20) {
                         VStack(alignment: .leading) {
@@ -48,6 +49,8 @@ struct ProfileView: View {
                     .foregroundStyle(.secondary)
                     .background(.ultraThinMaterial)
                     .cornerRadius(10)
+                    .overlay(RoundedRectangle(cornerRadius: 12)
+                    .stroke(.white, lineWidth: 0.5))
                     
                     // Displaying Name and Email
                     VStack(alignment: .center) {

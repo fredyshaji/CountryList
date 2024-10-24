@@ -48,6 +48,7 @@ struct SearchView: View {
                                 }
                             }
                         }
+                        .listRowBackground(Color.clear)
                     }
                     .listStyle(PlainListStyle())
                     .cornerRadius(10)

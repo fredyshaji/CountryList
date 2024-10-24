@@ -11,7 +11,7 @@ import SwiftUI
 struct CountryListApp: App {
     var body: some Scene {
         WindowGroup {
-            HomeView()
+            SplashView()
         }
     }
 }
